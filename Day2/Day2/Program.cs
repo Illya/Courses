@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -16,14 +17,14 @@ namespace Day2
             {
                 int a = 362880;
                 int b = Int32.MaxValue;
-                int c = b + a;
+                b += a;
             }
 
             unchecked
             {
                 int x = 362880;
                 int y = Int32.MaxValue;
-                int z = x + y;
+                x += y;
             }
             ////////////////////////////////
 
@@ -37,13 +38,13 @@ namespace Day2
             value_int64 = value_int32; // implicitly
             value_int64 = (Int64)value_int32; //explicitly
 
-            value_byte = value_int32; // cannot convert implicitly type 'int' to 'byte'
+            //value_byte = value_int32; // cannot convert implicitly type 'int' to 'byte'
             value_byte = (byte)value_int32;
 
             value_double = value_int32;
             value_double = (double)value_int32;
 
-            value_short = value_int32; // cannot convert implicitly type 'int' to 'short'
+            //value_short = value_int32; // cannot convert implicitly type 'int' to 'short'
             value_short = (short)value_int32;
             ////////////////////////////////////////////////////////
            
@@ -51,9 +52,10 @@ namespace Day2
             //
             int i = 10; // creating a value type 
             object o = i; // boxing value type 'i' to reference type 'o', for this value type the memory is allocated in the heap, and the object "o" is the reference to this value type
-            int j = (int) i; // unboxing 'i' from heap to value type 'j' that allocated in stack
+            int j = (int) o; // unboxing 'i' from heap to value type 'j' that allocated in stack
  
             Console.ReadKey();
         }
+
     }
 }
